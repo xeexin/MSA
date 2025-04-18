@@ -1,0 +1,62 @@
+select * from emp;
+
+select deptno, decode(deptno, 10, '판교점',20,'혜화점',30,'야탑점',40,'서울본사') name from emp;
+
+select deptno, decode(deptno, 
+                            10, sum(sal),
+                            20,max(sal),
+                            30,min(sal),
+                            40,avg(sal)) sal 
+        from emp 
+        group by deptno;
+        
+
+select * from department;
+select * from professor;
+
+select deptno,
+    nvl(sum(decode(deptno, 101, pay)),0) deptno101,
+    nvl(sum(decode(deptno, 102, pay)),0) deptno102,
+    nvl(sum(decode(deptno, 103, pay)),0) deptno103,
+    nvl(sum(decode(deptno, 201, pay)),0) deptno201,
+    nvl(sum(decode(deptno, 202, pay)),0) deptno202,
+    nvl(sum(decode(deptno, 203, pay)),0) deptno203,
+    nvl(sum(decode(deptno, 301, pay)),0) deptno301 
+    
+    from professor
+    group by deptno
+    order by deptno asc;
+
+
+select ename,sal,
+    case
+        when sal < 1000 then sal+(sal*0.8)
+        when sal between 1000 and 2000 then sal + (sal * 0.5)
+        when sal between 2001 and 3000 then sal + (sal * 0.3)
+        else sal + (sal *0.1)
+    end "인상된 급여"
+    from emp;
+
+
+-- 문제] pdept에 따라서 지사명을 출력하세요. (dcode, case 이용)
+select * from dept2;
+
+--select area, decode(pdept,
+--                        1000,'서울지사',
+--                        0001,'포항본사',
+--                        1003,'대전지사',
+--                        1007,'대전
+
+SELECT pdept,
+    CASE PDEPT 
+        WHEN '1000' THEN AREA
+        WHEN '0001' THEN AREA
+        WHEN '1003' THEN AREA
+        WHEN '1002' THEN AREA
+        WHEN '1006' THEN AREA
+        WHEN '1007' THEN AREA
+    END 
+FROM DEPT2 
+where area is not null and pdept is not null;
+
+
