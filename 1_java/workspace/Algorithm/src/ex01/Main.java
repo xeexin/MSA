@@ -1,43 +1,39 @@
 package ex01;
 
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Scanner;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.StringTokenizer;
+import java.util.TreeMap;
 
 public class Main {
 	public static void main(String[] args) throws NumberFormatException, IOException {
-
-		Scanner sc = new Scanner(System.in);
-
-		// 입력
-		int n = sc.nextInt();
-		Integer[][] arr = new Integer[n][2];
-
-		for (int i = 0; i < n; i++) {
-			arr[i][0] = sc.nextInt();
-			arr[i][1] = sc.nextInt();
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		
+		int n = Integer.parseInt(br.readLine());
+		
+		
+		TreeMap<String, String> arr = new TreeMap<String, String>();
+		
+		for(int x=0; x<n; x++) {
+			StringTokenizer st = new StringTokenizer(br.readLine());
+			String name = st.nextToken();
+			String status = st.nextToken();
+			
+			arr.put(name, status); // key 값 중복 시 마지막 값으로 update
 		}
-
-		// 정수형 배열 정렬
-		Arrays.sort(arr, new Comparator<Integer[]>() {
-
-			@Override
-			public int compare(Integer[] o1, Integer[] o2) {
-				if (o1[0].equals(o2[0])) {
-					return o1[1] - o2[1]; //오름
-				} else {
-					return o1[0] - o2[0]; // 오름
+		
+		// 역순 출력 (Z ~ A)
+				for (String name : arr.descendingKeySet()) {
+					if (arr.get(name).equals("enter")) {
+						System.out.println(name);
+					}
 				}
-
-			}
-
-		});
-		
-		for(int i=0; i<n; i++) {
-			System.out.println(arr[i][0] + " " + arr[i][1]);
-		}
-		
 
 	}
 }
