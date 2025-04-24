@@ -9,26 +9,33 @@ import java.util.TreeMap;
 public class Main {
 	public static void main(String[] args) throws NumberFormatException, IOException {
 
+		// 입력
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-		int n = Integer.parseInt(br.readLine());
-
-		TreeMap<String, String> arr = new TreeMap<String, String>();
-
-		for (int x = 0; x < n; x++) {
-			StringTokenizer st = new StringTokenizer(br.readLine());
-			String name = st.nextToken();
-			String status = st.nextToken();
-
-			arr.put(name, status); // key 값 중복 시 마지막 값으로 update
+		int n= Integer.parseInt(br.readLine());
+		int m= Integer.parseInt(br.readLine());
+		
+		int[] arr = new int[n];
+		int[] brr = new int[m];
+		int[] ret = new int[n*m];
+		int sum=0;
+		
+		for(int x=0; x<n; x++) {
+			arr[x]=Integer.parseInt(br.readLine());
 		}
-
-		// 역순 출력 (Z ~ A)
-		for (String name : arr.descendingKeySet()) {
-			if (arr.get(name).equals("enter")) {
-				System.out.println(name);
+		
+		for(int x=0; x<m; x++) {
+			brr[x]=Integer.parseInt(br.readLine());
+		}
+		
+		//구현
+		for(int y=0; y<n; y++) {
+			for(int x=0; x<m; x++) {
+				if()
 			}
 		}
+		
+		
+		
 
 	}
 }
