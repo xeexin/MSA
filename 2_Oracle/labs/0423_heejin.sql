@@ -413,21 +413,8 @@ ex) 바인드 변수 선언
  
 ------------------ 
 --CORSOR
-/*
-    
-*/
-select * from emp where job in ('SALESMAN');
- create or replace procedure p_job_emp(e_job in emp.job%type)
- is
-    name emp.enmae%type;
- begin
-    select ename into name from emp where job=e_job;
-    dbms_output.put_line(name || '님 담당업무는 ' || e_job);
-    
- end;
- 
- ---------------------------------
- CREATE OR REPLACE PROCEDURE p_job_emp(v_job IN emp.job%TYPE) 
+
+CREATE OR REPLACE PROCEDURE p_job_emp(v_job IN emp.job%TYPE) 
 IS
     name emp.ename%TYPE;
     empno emp.empno%TYPE;
