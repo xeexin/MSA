@@ -25,8 +25,10 @@ select * from reg_test where REGEXP_LIKE(text,'[0-9]*[A-Z]');
 select * from professor;
 
 
-
-
+-------------
+select * from gift;
+insert into gift values(11,'사탕세트', 100, 9000); 
+commit;
 
 
 
