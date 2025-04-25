@@ -14,7 +14,7 @@ public class GiftInsert {
 		// 2. Connection & Open
 		Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "heejin", "oracle");
 
-		// 3. USE (DML - Insert ) -Statemnet || PreparedStatement(변수처리)
+		// 3. USE (DML - Insert ) -Statemnet
 		// ** 자바는 자동커밋!
 		Statement stmt = conn.createStatement();
 
