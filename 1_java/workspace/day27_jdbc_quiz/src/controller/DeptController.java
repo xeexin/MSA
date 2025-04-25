@@ -33,12 +33,7 @@ public class DeptController {
 	// Close
 	public static void close() {
 		try {
-			ConnectionSingletonHelper.close(rs);
-			ConnectionSingletonHelper.close(stmt);
-			ConnectionSingletonHelper.close(pstnt);
-			ConnectionSingletonHelper.close(conn);
-			ConnectionSingletonHelper.close();
-			ConnectionSingletonHelper.close();
+		
 	
 		} catch (Exception e) {
 			e.printStackTrace();
