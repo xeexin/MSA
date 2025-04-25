@@ -15,7 +15,7 @@ public class Main {
 			String str = br.readLine();
 			String[] arr = str.split(" ");
 
-			System.out.println("Case #" + (x + 1) + ": ");
+			System.out.print("Case #" + (x + 1) + ": ");
 			
 			for (int y = arr.length - 1; y >= 0; y--) {
 				System.out.print(arr[y] + " ");
