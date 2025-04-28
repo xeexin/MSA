@@ -108,7 +108,8 @@ public class JDBCProjectEx3 extends JFrame implements ActionListener {
 	private String sqlInsert = "INSERT INTO CUSTOMERS VALUES( ?, ?, ?, ? )";
 	private String sqlDelete = "DELETE FROM CUSTOMERS WHERE CODE = ?";
 	private String sqlSelect = "SELECT * FROM CUSTOMERS";
-	private String sqlSearch = "SELECT * FROM CUSTOMERS WHERE NAME = ?";
+//	private String sqlSearch = "SELECT * FROM CUSTOMERS WHERE NAME = ?";
+	private String sqlSearch = "SELECT * FROM CUSTOMERS WHERE NAME like %?%";
 
 	public void dbConnect() {
 		try {
@@ -119,8 +120,9 @@ public class JDBCProjectEx3 extends JFrame implements ActionListener {
 			pstmtTotal = conn.prepareStatement(sqlSelect);
 			pstmtSearch = conn.prepareStatement(sqlSearch);
 
-			pstmtTotalScroll = conn.prepareStatement(sqlSelect, ResultSet.TYPE_SCROLL_SENSITIVE, // 커서 이동을 자유롭게하고 업데이트 내용을
-																							// 반영한다.
+			pstmtTotalScroll = conn.prepareStatement(sqlSelect, ResultSet.TYPE_SCROLL_SENSITIVE, // 커서 이동을 자유롭게하고 업데이트
+																									// 내용을
+					// 반영한다.
 					ResultSet.CONCUR_UPDATABLE); // resultset object 의 변경이 가능 <=> CONCUR_READ_ONLY
 
 			pstmtSearchScroll = conn.prepareStatement(sqlSearch, ResultSet.TYPE_SCROLL_SENSITIVE,
@@ -160,7 +162,7 @@ public class JDBCProjectEx3 extends JFrame implements ActionListener {
 			setTitle(e.getActionCommand());
 			search(); // 검색
 
-		} 
+		}
 //		else if( obj == btnUpdate ){
 //			if( cmd != UPDATE ){
 //				setText(UPDATE);  //user method
@@ -169,7 +171,7 @@ public class JDBCProjectEx3 extends JFrame implements ActionListener {
 //			setTitle(e.getActionCommand());
 //			update();  //수정
 //		}
-	else if (obj == btnTotal) {
+		else if (obj == btnTotal) {
 			setTitle(e.getActionCommand());
 			// 전체보기
 		}
@@ -212,6 +214,7 @@ public class JDBCProjectEx3 extends JFrame implements ActionListener {
 		}
 		JOptionPane.showMessageDialog(null, "추가 됐습니다. ");
 
+		total();
 		init();
 	} // add() end
 
@@ -220,8 +223,33 @@ public class JDBCProjectEx3 extends JFrame implements ActionListener {
 	}
 
 	public void search() {
+		String strName = txtName.getText();
 
-	}
+		if (strName.length() < 1) {
+			JOptionPane.showMessageDialog(null, "이름은 필수 입니다. 입력해주세요.");
+			return;
+		}
+		try {
+			pstmtSearchScroll.setString(1, strName);
+			ResultSet rsScroll = pstmtSearchScroll.executeQuery();
+
+			pstmtSearch.setString(1, strName);
+			ResultSet rs = pstmtSearch.executeQuery();
+			
+			if(model == null) model = new MyModel();
+			
+			model.getRowCount(rsScroll);
+			model.setData(rs);
+			
+			table.setModel(new DefaultTableModel(model.data, model.columnName));
+			table.updateUI();
+
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	} // search end
 
 	public void total() { // 전체보기(select all) 버튼 이벤트 처리 함수
 		try {
@@ -238,7 +266,6 @@ public class JDBCProjectEx3 extends JFrame implements ActionListener {
 //			table.setModel(model); // 모델 객체를 세팅하겠다.
 			table.setModel(new DefaultTableModel(model.data, model.columnName));
 			table.updateUI();
-			
 
 		} catch (Exception e) {
 			e.printStackTrace();
