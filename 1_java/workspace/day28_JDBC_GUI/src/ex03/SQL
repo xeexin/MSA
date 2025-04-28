@@ -1,0 +1,14 @@
+select * from customers;
+
+create table Customers(
+	code number(4) primary key,
+	name varchar2(30) not null,
+	email varchar2(30),
+	phone varchar2(20)
+	);
+
+	
+	insert into customers values(3,'park','',1111);
+	insert into customers values(4,'kang','',2222);
+	insert into customers values(5,'kwon','',3333);
+	insert into customers values(6,'moon','',4444);

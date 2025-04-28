@@ -106,10 +106,10 @@ public class JDBCProjectEx3 extends JFrame implements ActionListener {
 	PreparedStatement pstmtSearch, pstmtSearchScroll;
 
 	private String sqlInsert = "INSERT INTO CUSTOMERS VALUES( ?, ?, ?, ? )";
-	private String sqlDelete = "DELETE FROM CUSTOMERS WHERE CODE = ?";
+	private String sqlDelete = "DELETE FROM CUSTOMERS WHERE NAME = ?";
 	private String sqlSelect = "SELECT * FROM CUSTOMERS";
-//	private String sqlSearch = "SELECT * FROM CUSTOMERS WHERE NAME = ?";
-	private String sqlSearch = "SELECT * FROM CUSTOMERS WHERE NAME like %?%";
+	private String sqlSearch = "SELECT * FROM CUSTOMERS WHERE NAME = ?";
+//	private String sqlSearch = "SELECT * FROM CUSTOMERS WHERE NAME like ?";
 
 	public void dbConnect() {
 		try {
@@ -220,6 +220,20 @@ public class JDBCProjectEx3 extends JFrame implements ActionListener {
 
 	public void del() {
 
+		String strName = txtName.getText();
+
+		if (strName.length() < 1) {
+			JOptionPane.showMessageDialog(null, "이름은 필수 입니다. 입력해주세요.");
+			return;
+		}
+		try {
+			pstmtDelete.setString(1, strName);
+			ResultSet rs = pstmtDelete.executeQuery();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	public void search() {
@@ -235,16 +249,16 @@ public class JDBCProjectEx3 extends JFrame implements ActionListener {
 
 			pstmtSearch.setString(1, strName);
 			ResultSet rs = pstmtSearch.executeQuery();
-			
-			if(model == null) model = new MyModel();
-			
+
+			if (model == null)
+				model = new MyModel();
+
 			model.getRowCount(rsScroll);
 			model.setData(rs);
-			
+
 			table.setModel(new DefaultTableModel(model.data, model.columnName));
 			table.updateUI();
 
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
