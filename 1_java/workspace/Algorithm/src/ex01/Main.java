@@ -8,22 +8,24 @@ public class Main {
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-		String str = br.readLine();
+		int n = Integer.parseInt(br.readLine());
+		String[] str = new String[n];
 
-		int sum = 0;
-		int a = 0;
+		for (int x = 0; x < n; x++) {
+			str[x] = br.readLine();
+		}
 
-		for (int x = 0; x < str.length(); x++) {
-			int num;
-			if (str.charAt(x) == ',') {
-				num = Integer.parseInt(str.substring(a, x));
-				sum += num;
-				a = x + 1;
+		for (int x = 0; x < n; x++) {
+			char first = str[x].charAt(0);
+			if (first >= 'a' && first <= 'z') {
+				first = (char) (first - ('a' - 'A'));
+				str[x] = first + str[x].substring(1);
 			}
 		}
-		
-		sum += Integer.parseInt(str.substring(a,str.length()));
-		
-		System.out.println(sum);
+
+		for (int x = 0; x < n; x++) {
+			System.out.println(str[x]);
+		}
+
 	}
 }
