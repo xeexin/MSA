@@ -1,0 +1,19 @@
+/* External */
+
+@charset "UTF-8";
+
+body {
+  background-color: aquamarine;
+}
+.tbl,
+tr {
+  border: 5px dotted blue;
+  width: 650px;
+  height: 30px;
+  text-align: center;
+  border-color: brown;
+  border-collapse: separate;
+}
+#tab {
+  border: 5px dashed pink;
+}
