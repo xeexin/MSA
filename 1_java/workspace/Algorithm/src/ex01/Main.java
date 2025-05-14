@@ -1,35 +1,29 @@
 package ex01;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Arrays;
 
 class Solution {
-	public int solution(int[] A, int[] B) {
-		int answer = 0;
+	public String solution(String s) {
+		String answer = "";
+		String[] arr = s.split(" ");
 
-		Arrays.sort(A); // 오름차순
-		Arrays.sort(B);
+		for (int x = 0; x < arr.length; x++) {
+			String now = arr[x];
 
-		// 뒤집기
-		for (int x = 0; x < B.length / 2; x++) {
-			int tmp = B[x];
-			B[x] = B[B.length - 1 - x];
-			B[B.length - 1 - x] = tmp;
+			if (arr[x].length() == 0) {
+				answer += " ";
+			} else {
+				answer += now.substring(0, 1).toUpperCase();
+				answer += now.substring(1, now.length()).toLowerCase();
+				answer += " ";
+			}
 		}
 
-		for (int x = 0; x < A.length; x++) {
-			answer += (A[x] * B[x]);
+		if (s.substring(s.length() - 1, s.length()).equals(" ")) {
+			return answer;
 		}
 
-		return answer;
+		// 맨 마지막 " " 제거 후 반환
+		return answer.substring(0, answer.length() - 1);
 	}
 }
 
-public class Main {
-	public static void main(String[] args) throws NumberFormatException, IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-	}
-}
