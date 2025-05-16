@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- cnd 방식 -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <h4>jQuery Sample</h4>
+    </header>
+
+    <input id="inputdemo" value="  " />
+    <input type="button" value="변환1" />
+    <input type="button" value="변환2" />
+
+    <div class="welcome"></div>
+    <div class="welcome"></div>
+    <hr />
+    <div id="demo">
+      <div class="inner">Create jQuery Test</div>
+    </div>
+    <hr />
+    <div id="name">이부분에 클릭 이벤트가 발생하면 자신이름 출력하기</div>
+
+    <script type="text/javascript">
+      //   jQuery(document).ready(function () {});
+      $("h4").css("color", "aqua");
+      // #demo.inner 글자에 언더라인
+      //   $("#demo .inner").css("text-decoration", "underline");
+      // #demo.inner 글자에 기울기기
+      //   $("#demo .inner").css("transform", "rotate(45deg)");
+      // #demo.inner 글자에 투명도
+      //   $("#demo .inner").css("opacity", "0.5"); //px단위 생략가능
+      // 아래쪽에 5px 두께 실선 red
+      $("#demo .inner").css("border-bottom", "5px solid red");
+      // 한번에 다 적용
+      $("#demo .inner").css({
+        "border-bottom": "5px solid red",
+        opacity: "0.3",
+        "text-decoration": "underline",
+        transform: "rotate(15deg)",
+      });
+
+      // $("선택자").on("이벤트 종류","할 일");
+      $("#demo").on("mouseover", function () {
+        $(".inner").css("background", "green").html("글자 변경");
+      });
+      $("#demo").on("mouseout", function () {
+        // $(".inner").css("background", "white");
+        $(".inner").css("background", "white").html("Create jQuery Test");
+      });
+
+      //여러 선택자에 이벤트 추가
+      //   $("#demo, h4, div").mouseover(function () {
+      //     $(this).css("background", "yellow").html("MSA Th2!");
+      //   });
+
+      $("#name").mouseover(function () {
+        $(this).html("heejin");
+      });
+    </script>
+  </body>
+</html>

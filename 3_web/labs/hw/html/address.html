@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- config.js 먼저 불러오기 -->
+    <script src="../js/config.js"></script>
+    <!-- Google Maps JavaScript API -->
+    <script>
+      document.write(
+        `<script src="https://maps.googleapis.com/maps/api/js?key=${GOOGLE_API_KEY}"><\/script>`
+      );
+    </script>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <!-- 예쁘게 화면 꾸미고, 우리집 방문하기(ajax) -->
+    <h3>우리집 지도</h3>
+    <div id="map"></div>
+
+    <script>
+      $(document).ready(function () {
+        const address = "경기도 고양시 일산서구 일현로 97-11";
+
+        $.ajax({
+          url: "https://maps.googleapis.com/maps/api/geocode/json",
+          method: "GET",
+          data: {
+            address: address,
+            key: GOOGLE_API_KEY,
+          },
+          success: function (response) {
+            if (response.status === "OK") {
+              const location = response.results[0].geometry.location;
+              const lat = location.lat;
+              const lng = location.lng;
+              initMap(lat, lng);
+            } else {
+              alert("주소를 찾을 수 없습니다.");
+            }
+          },
+          error: function () {
+            alert("Geocoding API 요청 실패");
+          },
+        });
+
+        // 지도 생성 함수
+        function initMap(lat, lng) {
+          const myLocation = { lat: lat, lng: lng };
+          const map = new google.maps.Map(document.getElementById("map"), {
+            center: myLocation,
+            zoom: 16,
+          });
+
+          new google.maps.Marker({
+            position: myLocation,
+            map: map,
+            title: "우리집",
+          });
+        }
+      });
+    </script>
+
+    <!-- <gmp-map
+      center="37.695350646972656,126.76345825195312"
+      zoom="14"
+      map-id="DEMO_MAP_ID"
+    >
+      <gmp-advanced-marker
+        position="37.695350646972656,126.76345825195312"
+        title="My location"
+      ></gmp-advanced-marker>
+    </gmp-map> -->
+  </body>
+</html>
