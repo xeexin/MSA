@@ -1,26 +1,22 @@
 package ex01;
 
+import java.util.*;
+
 class Solution {
 	public int solution(String s) {
-		// baabaa
-		// bbaa
-		// aa
-		// "" -> 0 else -> 1;
+		int answer = 0;
+		Stack<Character> stack = new Stack<>();
 
-		int answer = 1;
-		String str = "";
-		while (true) {
-			for (int x = 0; x < s.length() - 1; x++) {
-				if (s.indexOf(x) == s.indexOf(x + 1))
-					continue;
-				else
-					str += s.indexOf(x);
-
-				System.out.println(str);
-				s = str;
+		for (char c : s.toCharArray()) {
+			if (stack.size() > 0 && stack.peek() == c) {
+				stack.pop();
+			} else {
+				stack.push(c);
 			}
 		}
+		if (stack.isEmpty()) {
+			return 1;
+		}
+		return answer;
 	}
-
 }
-
