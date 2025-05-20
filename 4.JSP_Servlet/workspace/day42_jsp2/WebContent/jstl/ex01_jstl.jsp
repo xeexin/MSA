@@ -1,16 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ex_01_jstl.jsp</title>
 </head>
 <body>
-	<h2>JSP Basic</h2>
-	<div>아무거나~~~</div>
-	<%
-		//스크립트릿 : 
-	%>
+<h3>JSTL core 라이브러리 사용 예제</h3>
+<c:
+
 </body>
 </html>
