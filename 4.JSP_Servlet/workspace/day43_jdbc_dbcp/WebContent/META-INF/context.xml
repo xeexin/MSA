@@ -11,7 +11,7 @@
 		username="heejin"
 		password="oracle"
 		driverClassName="oracle.jdbc.OracleDriver"
-		url="jdbc:oracle:thin@localhost:1521:xe"
+		url="jdbc:oracle:thin:@localhost:1521:xe"
 		
 		maxActive="20"
 		maxIdle="10"
