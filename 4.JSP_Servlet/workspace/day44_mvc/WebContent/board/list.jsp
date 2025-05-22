@@ -12,5 +12,7 @@
 <h4>${title }</h4>
 <h4>${contents }</h4>
 <a href="write">글쓰기</a>
+<a href="update">수정하기</a>
+<a href="delete">삭제하기</a>
 </body>
 </html>
