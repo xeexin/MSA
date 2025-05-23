@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- appCtx.xml -->
+	<!-- IRecordImpl record = new IRecordImpl(); -->
+	<bean id="record" class="ex03.di.IRecordImpl">
+		<constructor-arg>
+			<value>100</value>
+		</constructor-arg>
+		<constructor-arg value="55" />
+		<constructor-arg value="99" />
+	</bean>
+
+	<bean class="ex03.di.IRecordViewImpl" id="view">
+			<!-- set  -->	<!-- 참조한 애가 누구니  -->	
+		<property name="record" ref="record" />
+	</bean>
+	
+	
+</beans>
