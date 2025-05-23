@@ -7,11 +7,12 @@ public class MainEntry {
 	public static void main(String[] args) {
 
 		ApplicationContext context = new ClassPathXmlApplicationContext("ex03/di/appCtx.xml");
+//		ApplicationContext context = new ClassPathXmlApplicationContext("appCtx.xml");
 
 //		IRecordViewImpl view =(IRecordViewImpl) context.getBean("view");
 		IRecordViewImpl view = context.getBean("view", IRecordViewImpl.class);
 		
-		view.input();
+//		view.input();
 		view.print();
 		
 		

@@ -39,6 +39,9 @@ public class IRecordViewImpl implements IRecordView {
 		System.out.println("\n\nKOR : " + record.getKor());
 		System.out.println("ENG : " + record.getEng());
 		System.out.println("COM : " + record.getCom());
+		
+		System.out.println(record.total());
+		System.out.println(record.avg());
 	}
 
 }
