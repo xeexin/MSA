@@ -1,0 +1,23 @@
+MVC 게시판
+
+Model(dto, dato, service)
+
+View(jsp)
+
+Controller (Servlet)
+
+클라이언트 요청 -> Controller -> (i)service -> (i) dao,dto -> (impl) service -> controller -> view --> 응답
+
+1. 요구사항 ( 조건 : DB가 여러개 있다는 전재)
+- DB를 2개 사용 : oracle 연동, mysql 연동...
+
+create table Article (Id number, name varchar2(20)....)
+
+Model 
+DTO > Article
+DAO > AricleDao (db 연결, CRUD, sql) > 인터페이스 기반 설계 >> 추상 함수
+ArticleDao 구현하는 OracleDAO, MysqlDAO
+
+Service >> DAO 생성 함수 호출
+>> service 클래스는 ArticleDAO에 의존하다. (포괄적 의미)
+
