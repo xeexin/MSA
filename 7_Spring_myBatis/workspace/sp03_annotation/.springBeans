@@ -7,11 +7,7 @@
 	</configSuffixes>
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
-		<config>src/ex03/di/appCtx.xml</config>
-		<config>src/ex04/di/applicationContext.xml</config>
-		<config>src/ex05/spring/appCtx.xml</config>
-		<config>src/quiz01/appCtx.xml</config>
-		<config>src/quiz02/appCtx.xml</config>
+		<config>src/ex04/di/autowired/autowiredCtx.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
