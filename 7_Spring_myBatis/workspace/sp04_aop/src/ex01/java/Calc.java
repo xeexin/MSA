@@ -1,0 +1,52 @@
+package ex01.java;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.util.StopWatch;
+
+// 사칙연산 : 덧셈, 뺼셈, 곱셈, 나눗셈
+public class Calc {
+
+	public int plus(int x, int y) {
+
+		Log log = LogFactory.getLog(this.getClass());
+
+		StopWatch sw = new StopWatch();
+		sw.start(); // 시간 측정 시작
+		log.info("타이머 측정 시작");
+
+		int ret = x + y;
+
+		sw.stop(); // 시간 측정 끝
+
+		log.info("타이머 측정 종료");
+		
+		log.info("[TimeLog] method : add");
+		log.info("[TimeLog] proces time : " + sw.getTotalTimeMillis()); // 작업에 걸린 시간
+
+		return ret;
+	}
+	
+	
+	
+	public int mul(int x, int y) {
+
+		Log log = LogFactory.getLog(this.getClass());
+
+		StopWatch sw = new StopWatch();
+		sw.start(); // 시간 측정 시작
+		log.info("타이머 측정 시작");
+
+		int ret = x * y;
+
+		sw.stop(); // 시간 측정 끝
+
+		log.info("타이머 측정 종료");
+		
+		log.info("[TimeLog] method : mul");
+		log.info("[TimeLog] proces time : " + sw.getTotalTimeMillis()); // 작업에 걸린 시간
+
+		return ret;
+	}
+
+}

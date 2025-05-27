@@ -7,9 +7,7 @@
 	</configSuffixes>
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
-		<config>src/ex04/di/autowired/autowiredCtx.xml</config>
-		<config>src/ex05/di/qualifier/appCtx.xml</config>
-		<config>src/ex06/di/resource/resourceCtx.xml</config>
+		<config>src/ex03/aop/appCtx.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>

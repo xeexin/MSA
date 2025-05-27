@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- appCtx.xml -->
+
+	<bean class="ex03.aop.CalcImpl" id="calc" /> <!-- Calc calc = new Calc() -->
+	<bean class="ex03.aop.LogPrintHandlerImpl"
+		id="logPrintHandlerImpl" />
+
+	<bean class="org.springframework.aop.framework.ProxyFactoryBean"
+		id="proxy">
+		<!-- 1.클래스 2.인터페이스 3.보조업무 *순서 상관 없음 -->
+		<property name="proxyInterfaces">
+			<list>
+				<value>ex03.aop.Calc</value>
+			</list> <!--인터페이스 -->
+		</property>
+
+		<property name="target" ref="calc" />
+		<property name="interceptorNames">
+			<list>
+				<value>logPrintHandlerImpl</value>  <!-- handler : 보조업무 -->
+			</list>
+		</property>
+
+	</bean>
+
+</beans>
