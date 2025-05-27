@@ -1,0 +1,18 @@
+package ex04.aop;
+
+public class IBookBeanImpl implements IBookBean {
+
+	@Override
+	public void testHello(String str) {
+		System.out.println("public void testHello(String str) call ~~ " + str);
+		
+
+	}
+
+	@Override
+	public int korHello() {
+		System.out.println("public void korHello() call ~~ ");
+		return 3;
+	}
+
+}
