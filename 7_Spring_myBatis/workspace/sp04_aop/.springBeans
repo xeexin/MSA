@@ -9,6 +9,7 @@
 	<configs>
 		<config>src/ex03/aop/appCtx.xml</config>
 		<config>src/ex04/aop/ctx.xml</config>
+		<config>src/ex05/aop/appCtx.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
