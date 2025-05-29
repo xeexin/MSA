@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,10 +7,11 @@
 <title>List.jsp</title>
 </head>
 <body>
-<h1>${list }</h1>
-<h1>${title }</h1>
-<h1>${content }</h1>
+	<h1>${list }</h1>
+	<h1>${title }</h1>
+	<h1>${content }</h1>
 
-<a href="hello.do">Hello</a>
+	<a href="hello.do">Hello</a>&nbsp;&nbsp;
+	<a href="update.do">Update</a>
 </body>
 </html>

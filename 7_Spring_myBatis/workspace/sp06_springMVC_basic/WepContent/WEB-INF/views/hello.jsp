@@ -10,7 +10,7 @@
 	<h1>Hello Page</h1>
 	인사합니다.
 	<h3>${nickname }</h3>
-	<a href="list.do">List</a>
-	
+	<a href="list.do">List</a> &nbsp;&nbsp;
+	<a href="update.do">update</a>
 </body>
 </html>
