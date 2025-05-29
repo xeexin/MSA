@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- spring-servlet.xml -->
+
+	<context:annotation-config />
+
+	<!-- user class instance(object) create -->
+	<bean class="edu.kosa.controller.ListController" />
+	<bean class="edu.kosa.controller.WriteFormController"></bean>
+	<bean class="edu.kosa.controller.WriteController" />
+	<bean class="edu.kosa.controller.DeleteController"/>
+
+	<!-- ViewResolver 빈 객체 생성 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/WEB-INF/views/</value>
+		</property>
+		<property name="suffix" value=".jsp" />
+
+	</bean>
+
+	<context:component-scan
+		base-package="edu.kosa.model"></context:component-scan>
+</beans>
