@@ -1,36 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
-                             http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
-         id="WebApp_ID"
-         version="4.0">
-
-  <display-name>sp07_springMVC_JDBC</display-name>
-
-  <!-- Spring 설정 파일 경로 등록 -->
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>sp08_springMVC_JDBC</display-name>
+  
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>/WEB-INF/applicationContext.xml</param-value>
+    <param-value>/WEB-INF/dbContext.xml</param-value>
   </context-param>
-
-  <!-- ContextLoaderListener 등록 -->
+  
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
-
-  <!-- DispatcherServlet 등록 -->
+  
   <servlet>
-    <servlet-name>spring</servlet-name>
+    <servlet-name>dispatcher</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
   </servlet>
-
+  
   <servlet-mapping>
-    <servlet-name>spring</servlet-name>
-    <url-pattern>*.bo</url-pattern>
+    <servlet-name>dispatcher</servlet-name>
+    <url-pattern>*.kosa</url-pattern>
   </servlet-mapping>
-
-  <!-- 한글 인코딩 필터 -->
+ 
   <filter>
     <filter-name>EncodingFilter</filter-name>
     <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -39,14 +29,14 @@
       <param-value>UTF-8</param-value>
     </init-param>
   </filter>
-
+  
   <filter-mapping>
     <filter-name>EncodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
-
-  <!-- 초기 진입 페이지 -->
+  
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
+  
 </web-app>
