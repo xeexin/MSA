@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
 
+@Component // memberDAOImpl bean ¼³Á¤µÊ
 public class MemberDAOImpl implements MemberDAO {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
@@ -35,17 +37,32 @@ public class MemberDAOImpl implements MemberDAO {
 		return jdbcTemplate.queryForList(sql, id);
 	}
 
-	
 	@Override
-	public boolean memberCheck(String id, String pwd) throws SQLException {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean memberCheck(String id, String pwd) throws SQLException { // id check
+
+		String sql = "SELECT * FROM USERMEMBER WHERE ID = ? AND PWD = ?";
+
+		boolean flag = false;
+		Object[] params = { id, pwd };
+
+		if (jdbcTemplate.queryForList(sql, params).size() > 0)
+			flag = true;
+
+		return flag;
 	}
 
 	@Override
 	public boolean memberInsert(String id, String name, String pwd, String email, int age) throws SQLException {
-		// TODO Auto-generated method stub
-		return false;
+		String sql = "INSERT INTO USERMEMBER VALUES(?,?,?,?,?)";
+
+		boolean flag = false;
+
+		Object[] params = { id, name, pwd, email, age };
+
+		if (jdbcTemplate.update(sql, params) > 0)
+			flag = true;
+
+		return flag;
 	}
 
 }

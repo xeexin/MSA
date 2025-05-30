@@ -10,6 +10,10 @@
 	<context:annotation-config />
 
 	<!-- user class instance(object) create -->
+	<bean class="com.controller.JoinController"/>
+	<bean class="com.controller.LoginController"/>
+	<bean class="com.controller.LogOutController"/>
+	<bean class="com.controller.MemberCheckController"/>
 
 
 	<!-- ViewResolver 빈 객체 생성 -->
