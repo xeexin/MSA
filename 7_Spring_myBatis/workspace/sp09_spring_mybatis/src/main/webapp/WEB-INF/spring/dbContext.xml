@@ -2,10 +2,13 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:p="http://www.springframework.org/schema/p"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
 	<!-- applicationContext.xml -->
-	<!-- JDBC 설정 정보, DB 연결하는 설정 파일 -->
+	<!-- JDBC 설정 정보, DB 연결하는 설정 파일 || myBatis -->
 
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
@@ -13,6 +16,20 @@
 		p:url="jdbc:oracle:thin:@localhost:1521:xe" p:username="heejin"
 		p:password="oracle" />
 
-
+	<!-- myBatis -->
+	<bean id="sqlSessionFactoryBean"
+		class="org.mybatis.spring.SqlSessionFactoryBean"
+		p:dataSource-ref="dataSource"
+		p:mapperLocations="classpath*:kr/co/mycom/model/mapper/*xml" />
+		
+		<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" 
+		c:sqlSessionFactory-ref="sqlSessionFactoryBean"/>
+		
+<!-- 		데이터베이스 트랜잭션을 관리하는 중요한 역할을 함. 트랜잭션이 시작된 상태를 현재 스래드에 바인딩 함.
+		트랜잭션이 정상적으로 수행 되었을 경우, commit() 메서드를 통해 데이터베이스에 반영되도록 함
+		트랜잭션 수행 도중 예외가 발생하면 rollback() 메서드를 호출하여 트랜잭션을 롤백하고, 변경된 데이터가 데이터베이스에 반영되지 않도록 함 -->
+		<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+		p:dataSource-ref="dataSource"/>
+		
 
 </beans>
