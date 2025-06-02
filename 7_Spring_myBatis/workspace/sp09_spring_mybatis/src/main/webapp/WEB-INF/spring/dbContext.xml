@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- applicationContext.xml -->
+	<!-- JDBC 설정 정보, DB 연결하는 설정 파일 -->
+
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+		p:driverClassName="oracle.jdbc.OracleDriver"
+		p:url="jdbc:oracle:thin:@localhost:1521:xe" p:username="heejin"
+		p:password="oracle" />
+
+
+
+</beans>
