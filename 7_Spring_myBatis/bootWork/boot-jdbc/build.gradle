@@ -1,0 +1,47 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.3.12'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenLocal() //로컬에 설치된 라이브러리 우선 적용
+	mavenCentral()
+}
+
+dependencies {
+     implementation 'org.springframework.boot:spring-boot-starter-web'  // 웹 및 REST API 개발
+
+      compileOnly 'org.projectlombok:lombok'
+      annotationProcessor 'org.projectlombok:lombok'
+
+    implementation 'org.springframework.boot:spring-boot-starter'
+
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'   // JDBC + 트랜잭션 지원
+      implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+     runtimeOnly 'com.oracle.database.jdbc:ojdbc11'   // Oracle 공식 OJDBC 11 권장
+     
+     implementation 'com.oracle.database.jdbc:ucp:21.11.0.0'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'  // Spring Boot 테스트 도구 모음
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'   // JUnit 플랫폼 런처
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
