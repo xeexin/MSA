@@ -1,0 +1,22 @@
+
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1521:xe
+    username: heejin
+    password: oracle
+    driver-class-name: oracle.jdbc.OracleDriver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.OracleDialect
+  application:
+    name: spring-jwt-example
+
+  main:
+    allow-bean-definition-overriding: true    # 중복을 제거
+
+server:
+  port: 8081
+shutdown: graceful
