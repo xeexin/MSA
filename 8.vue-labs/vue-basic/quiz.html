@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quzi - 과제</title>
+</head>
+<body>
+  
+  <div id="app">
+    <div>
+      <button>BUTTON-Click</button>
+      <my-global-component-A></my-global-component-A>
+      <my-global-component-B></my-global-component-B>
+      <my-local-component-C></my-local-component-C>
+      <my-local-component-D></my-local-component-D>
+      <my-local-component-F></my-local-component-F>
+
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/vue"></script>
+  <script>
+      // application instance
+      var app = Vue.createApp({
+        name: "App",
+        data() {
+          return {}
+        },
+        // 지역 컴포넌트 등록
+        components: {
+          "my-local-component-C" : {
+            name: "MyLocalComponentC",
+            data() {
+              return {}
+            },
+            template : "<div>여기는 local-C이예요!!</div>"
+          }
+          ,
+          "my-local-component-D" : {
+            name: "MyLocalComponentD",
+            data() {
+              return {}
+            },
+            template : "<div>여기는 local-D이예요!!</div>"
+          },
+          "my-local-component-F" : {
+            name: "MyLocalComponentF",
+            data() {
+              return {}
+            },
+            template : "<div>여기는 local-F이예요!!</div>"
+          }
+        }
+      }) 
+
+      // 전역 component 등록
+      app.component("my-global-component-A",{
+        name: "myGlobalComponent-A",
+        data() {
+          return {
+            message: "A-글로벌이예요!"
+          }
+        },
+        template: "<div>전역 A컴포넌트예요! : {{ message }}</div>"
+      }),
+
+      // 전역 component 등록
+      app.component("my-global-component-B",{
+        name: "myGlobalComponent-B",
+        data() {
+          return {
+            message: "B-글로벌이예요!"
+          }
+        },
+        template: "<div>전역 B컴포넌트예요! : {{ message }}</div>"
+      })
+
+      // root component (instance)
+      var vm = app.mount("#app")
+  </script>
+
+</body>
+</html>

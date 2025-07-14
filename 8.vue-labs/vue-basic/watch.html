@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <div>
+      x : <input type="text" v-model="x"><br>
+      y : <input type="text" v-model="y"><br>
+      덧셈결과 : {{ sum }}
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/vue"></script>
+  <script>
+    var vm = Vue.createApp({
+       name: "App",
+       data() {
+        return {
+          x : 0,
+          y : 0,
+          sum : 0
+        }
+       },
+       watch : {
+          x(current, old) {
+              console.log("x값이 변경되었습니다.")
+              this.sum = parseInt(current) + parseInt(this.y)
+          },
+          y(current, old) {
+              console.log("y값이 변경되었습니다.")
+              this.sum = parseInt(current) + parseInt(this.x)
+          },
+       }
+    }).mount("#app")
+  </script>
+
+</body>
+</html>

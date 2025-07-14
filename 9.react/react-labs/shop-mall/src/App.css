@@ -1,0 +1,71 @@
+.nav {
+  background: lightcyan;
+  width: 100%;
+  display: flex;
+  color: aqua;
+  padding: 20px;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.jumbotron {
+  background-repeat: no-repeat;
+  /* background-image: url("./images/bg.jpg"); */
+  background-position: 50hmax;
+  background-size: cover;
+  overflow: hidden;
+  margin-bottom: 25px;
+  padding: 2rem 1rem;
+}
+
+.background {
+  /* background-image: url('./images/background.jpg'); */
+  background-size: cover;
+  color: white;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.banner-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover; /* 이미지 비율 유지하며 잘라냄 */
+  object-position: center;
+}

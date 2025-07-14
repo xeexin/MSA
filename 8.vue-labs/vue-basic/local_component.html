@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <div id="app">
+    <div>
+      <button>여기는 버튼이예요!!</button>
+      <my-global-component></my-global-component>
+      <my-local-component></my-local-component>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/vue"></script>
+  <script>
+      // application instance
+      var app = Vue.createApp({
+        name: "App",
+        data() {
+          return {}
+        },
+        // 지역 컴포넌트 등록
+        components: {
+          "my-local-component" : {
+            name: "MyLocalComponent",
+            data() {
+              return {}
+            },
+            template : "<div>여기는 local이예요!!</div>"
+          }
+        }
+      }) 
+
+      // 전역 component 등록
+      app.component("my-global-component",{
+        name: "myGlobalComponent",
+        data() {
+          return {
+            message: "글로벌이예요!"
+          }
+        },
+        template: "<div>전역 컴포넌트예요! : {{ message }}</div>"
+      })
+
+      // root component (instance)
+      var vm = app.mount("#app")
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <h1>msg의 값은 : {{msg}} </h1>
+    <h1 v-text="msg"></h1>
+    <h1 v-text="message"></h1>
+    <h1 v-html="message"></h1>
+  </div>
+
+  <script src="https://unpkg.com/vue"></script>
+  <script>
+    var vm = Vue.createApp({
+       name: "App",
+       data() {
+        return {
+          msg : "Hello~",
+          message: "<i>문자를 기울여요!!<i>",
+        }
+       }
+    }).mount("#app")
+  </script>
+
+</body>
+</html>

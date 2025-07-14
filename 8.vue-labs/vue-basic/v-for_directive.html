@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <table border="1">
+      <thead>
+        <tr>
+          <td>학번</td>
+          <td>이름</td>
+          <td>학교</td>
+        </tr>
+      </thead>
+      <tbody>
+       <tr v-for="(student,index) in students" :key="student.no">
+        <td>{{student.no}}</td>
+        <td>{{student.name}}</td>
+        <td>{{student.dept}}</td>
+       </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="https://unpkg.com/vue"></script>
+  <script>
+    var vm = Vue.createApp({
+       name: "App",
+       data() {
+        return {
+          students:[{
+            no: 1000,
+            name: "yuna kim",
+            dept: "철학과"
+          },{
+            no: 2000,
+            name: "신사임당",
+            dept: "국어국문학과"
+          },{
+            no: 3000,
+            name: "강감찬",
+            dept: "사학과"
+          }]
+        }
+       },
+     
+    }).mount("#app")
+  </script>
+
+</body>
+</html>

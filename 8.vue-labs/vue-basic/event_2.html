@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- mount point -->
+  <div id="app">
+    <child-component v-on:show-log="printText"></child-component>
+  </div>
+
+  <script src="https://unpkg.com/vue"></script>
+  <script>
+    var vm = Vue.createApp({
+      name: "App",
+      data() {
+        return{
+          message:"Vue-240714"
+        }
+        },
+        methods: {
+          printText(...args) {
+            console.log("여기는 Root 이벤트 핸들러입니다.")
+            console.log("첫번째 전달된 데이터 : " + args[0])
+            console.log("두번째 전달된 데이터 : " + args[1])
+          }
+        },
+        components: {
+          "child-component": {
+            name: "ChildComponent",
+            methods: {
+              showLog() {
+                console.log("버튼 클릭클릭!");
+                //사용자 정의 이벤트를 발생시킬때
+                this.$emit('show-log', 100, "hello~")
+              }
+            },
+            template: "<button v-on:click='showLog'>클릭클릭</button>"
+          }
+        }
+    }).mount("#app")
+  </script>
+</body>
+</html>

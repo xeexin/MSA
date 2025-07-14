@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+   
+  </div>
+
+  <script src="https://unpkg.com/vue"></script>
+  <script>
+    var vm = Vue.createApp({
+       name: "App",
+       data() {
+        return {
+          x : 0,
+        }
+       },
+      created() {
+        console.log("created() call~");
+        //created lifecycle hook method
+        //데이터 확보하기 위한 resource 처리
+      },
+      mounted() {
+        //component가 mount point에 mount된 직후에 호출
+      },
+      updated() {
+        //반응성을 가지고 있는 데이터가 변경 되었을 때 화면에
+        //다시 그려야 해요! 다시 그린 직후에 호출
+      },
+    }).mount("#app")
+  </script>
+
+</body>
+</html>

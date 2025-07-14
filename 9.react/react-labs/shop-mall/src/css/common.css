@@ -1,0 +1,20 @@
+body{
+    margin: 0;
+    background-color: yellow;
+}
+
+input {
+    background-color: aquamarine;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+ /* div.container h4 {
+    color: pink;
+}
+
+div.container p {
+    color: brown;
+}  */

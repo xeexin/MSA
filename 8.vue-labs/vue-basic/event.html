@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- mount point -->
+  <div id="app">
+    <child-component v-on:myevent="myFunc"></child-component>
+  </div>
+
+  <script src="https://unpkg.com/vue"></script>
+  <script>
+    var vm = Vue.createApp({
+       data() {
+        return {
+          message : "소리없는 아우성!!"
+        }
+      },
+      components : {
+        "child-component":{
+          name: "ChildComponent",
+          methods: {
+            showLog() {
+              console.log("버튼 클릭클릭!");
+            }
+          },
+          template: "<button v-on:click='showLog'>클릭클릭</button>"
+        }
+      }
+    }).mount("#app")
+  </script>
+
+</body>
+</html>

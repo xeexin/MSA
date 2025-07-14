@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <child-component v-bind:propsdata="message"></child-component>
+  </div>
+
+  <script src="https://unpkg.com/vue"></script>
+  <script>
+    var app = Vue.createApp({
+      name: "App",
+      data() {
+        return {
+          message : "소리없는 아우성!!"
+        }
+      }
+    })
+    
+    app.component("child-component",{
+      name: "Childcomponent",
+      data() {
+        return{}
+      },
+      //props:[propsdata, mydata],
+      props : {
+        propsdata: String,
+        mydata: Number
+      },
+      template: "<div>부모로부터 전달된 데이터 : {{propsdata}}</div>"
+    })
+    var vm = app.mount("#app")
+
+  </script>
+
+</body>
+</html>
